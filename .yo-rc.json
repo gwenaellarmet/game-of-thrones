@@ -1,0 +1,23 @@
+{
+  "generator-ngx-library": {
+    "authorName": "Gwenael LARMET",
+    "authorEmail": "gwenael.larmet-ext@randstad.fr",
+    "githubUsername": "gwenaellarmet",
+    "projectName": "game-of-thrones",
+    "projectVersion": "0.0.1",
+    "projectDescription": "Angular library built with ❤ using ngx-library yeoman generator.",
+    "projectKeywords": [
+      "ng",
+      "angular",
+      "library"
+    ],
+    "ngPrefix": "got",
+    "ngVersion": "4.0.0",
+    "ngModules": [
+      "core",
+      "common"
+    ],
+    "useGreenkeeper": false,
+    "useCompodoc": false
+  }
+}
