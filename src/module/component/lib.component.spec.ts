@@ -19,12 +19,12 @@ describe('LibComponent', function () {
   beforeEach(() => {
     fixture = TestBed.createComponent(LibComponent);
     comp = fixture.componentInstance;
-    de = fixture.debugElement.query(By.css('p.description'));
+    de = fixture.debugElement.query(By.css('h1'));
   });
 
   it('should create component', () => expect(comp).toBeDefined());
 
-  it('should have expected <p> text', () => {
+  it('should have expected <h1> text', () => {
     fixture.detectChanges();
     const p = de.nativeElement;
     expect(p.innerText).toEqual('Angular library built with ❤ using ngx-library yeoman generator.');

@@ -15,7 +15,8 @@
     "ngVersion": "4.0.0",
     "ngModules": [
       "core",
-      "common"
+      "common",
+      "animations"
     ],
     "useGreenkeeper": false,
     "useCompodoc": false
