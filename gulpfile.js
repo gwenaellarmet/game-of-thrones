@@ -75,8 +75,7 @@ const config = {
   demoDir: 'demo/',
   buildDir: 'tmp/',
   outputDir: 'dist/',
-  coverageDir: 'coverage/',
-  assetsDir: 'src/module/assets/'
+  coverageDir: 'coverage/'
 };
 
 const rootFolder = path.join(__dirname);
@@ -262,13 +261,9 @@ gulp.task('watch', () => {
   gulp.watch([config.allTs, config.allHtml, config.allSass], ['compile']);
 });
 
-gulp.task('copy-assets', () => {
-  return gulp.src([`${config.assetsDir}/**/*`]).pipe(gulp.dest(`${config.outputDir}/module/assets/`));
-})
-
 // Build the 'dist' folder (without publishing it to NPM)
 gulp.task('build', ['clean'], (cb) => {
-  runSequence('compile',  'npm-package', 'rollup-bundle', 'link', cb);
+  runSequence('compile', 'test', 'npm-package', 'rollup-bundle', cb);
 });
 
 /////////////////////////////////////////////////////////////////////////////
@@ -319,17 +314,15 @@ gulp.task('rollup-bundle', (cb) => {
     const es2015Entry = path.join(es2015OutputFolder, `${config.libraryName}.js`);
     const globals = {
       // Angular dependencies
-      'typescript'         : 'ts',
-      '@angular/core'      : 'ng.core',
-      '@angular/common'    : 'ng.common',
-
+      '@angular/core': 'ng.core',
+      '@angular/common': 'ng.common',
       '@angular/animations': 'ng.animations',
-      '@angular/cdk'       : 'ng.cdk',
-      '@angular/material'  : 'ng.material'
 
       // ATTENTION:
       // Add any other dependency or peer dependency of your library here
       // This is required for UMD bundle users.
+      '@angular/cdk'       : 'ng.cdk',
+      '@angular/material'  : 'ng.material'
     };
     const rollupBaseConfig = {
       moduleName: _.camelCase(config.libraryName),
